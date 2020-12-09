@@ -14,7 +14,6 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPageState extends State<IndexPage> {
-  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

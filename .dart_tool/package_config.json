@@ -44,6 +44,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///Users/dly/.pub-cache/hosted/dart-pub.mirrors.sjtug.sjtu.edu.cn%2547/dio-3.0.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/dly/.pub-cache/hosted/dart-pub.mirrors.sjtug.sjtu.edu.cn%2547/fake_async-1.2.0-nullsafety.1",
       "packageUri": "lib/",
@@ -60,6 +66,12 @@
       "rootUri": "file:///Users/dly/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "2.2"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/dly/.pub-cache/hosted/dart-pub.mirrors.sjtug.sjtu.edu.cn%2547/http_parser-3.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
     },
     {
       "name": "matcher",
@@ -152,7 +164,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-12-09T06:32:19.340610Z",
+  "generated": "2020-12-09T08:00:49.466789Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }
