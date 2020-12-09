@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_jd_dly/config/jd_app.dart';
 
 class ComResponse<T> {
   int code;
