@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+class CartPage extends StatefulWidget {
+  CartPage({Key key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _CartPageState createState() => _CartPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('首页'),
+          title: Text("购物车"),
         ),
         body: Container(),
       ),
