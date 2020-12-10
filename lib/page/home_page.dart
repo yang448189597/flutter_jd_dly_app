@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
         body: Container(
           color: Color(0xFFf4f4f4),
           child: Consumer<HomePageProvider>(builder: (_, provider, __) {
-            print(provider.isLoading);
             // 加载动画
             if (provider.isLoading) {
               return Center(child: CupertinoActivityIndicator());
@@ -53,7 +52,7 @@ class _HomePageState extends State<HomePage> {
 
             // 获取model 中的数据
             HomePageModel model = provider.model;
-            print(model.toJson());
+            // print(model.toJson());
 
             return ListView(
               children: <Widget>[

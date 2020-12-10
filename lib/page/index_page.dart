@@ -44,7 +44,7 @@ class _IndexPageState extends State<IndexPage> {
             // 层布局控件 可以存放多个widget 但是只显示一个
             children: [
               HomePage(),
-              CategroyPage(),
+              CategoryPage(),
               CartPage(),
               UserPage(),
             ],
