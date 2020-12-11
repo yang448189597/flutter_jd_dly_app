@@ -64,16 +64,21 @@ class _CategoryPageState extends State<CategoryPage> {
                               child: Container(
                                   height: 50.0,
                                   padding: const EdgeInsets.only(top: 15),
-                                  color: Color(0xFFF8F8F8),
+                                  color: provider.tabIndex == index
+                                      ? Colors.white
+                                      : Color(0xFFF8F8F8),
                                   child: Text(
                                     provider.categoryNavList[index],
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: Color(0xFF333333),
+                                        color: provider.tabIndex == index
+                                            ? Color(0xFFe93b3d)
+                                            : Color(0xFF333333),
                                         fontWeight: FontWeight.w500),
                                   )),
                               onTap: () {
-                                print(index);
+                                // print(index);
+                                provider.loadCategoryContentData(index);
                               },
                             );
                           }),
