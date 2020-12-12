@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_jd_dly/model/product_info_model.dart';
+import 'package:flutter_jd_dly/page/production_detail_page.dart';
+import 'package:flutter_jd_dly/provider/product_detail_provider.dart';
 import 'package:flutter_jd_dly/provider/product_list_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -49,12 +51,29 @@ class _ProductListPageState extends State<ProductListPage> {
                   itemCount: provider.list.length,
                   itemBuilder: (context, index) {
                     ProductionInfoModel model = provider.list[index];
-                    print(model.toJson());
+                    // print(model.toJson());
 
                     return InkWell(
                       child: buildProductRow(model),
                       onTap: () {
                         // 点击跳转进单个商品列表的详情页面
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                ChangeNotifierProvider<ProvductDetailProvider>(
+                                  create: (context) {
+                                    ProvductDetailProvider provider =
+                                        ProvductDetailProvider();
+                                    provider.loadProductData(id: model.id);
+                                    return provider;
+                                  },
+                                  child: Consumer<ProvductDetailProvider>(
+                                    builder: (_, provider, __) {
+                                      return Container(
+                                        child: ProductDetailPage(id: model.id),
+                                      );
+                                    },
+                                  ),
+                                )));
                       },
                     );
                   });
