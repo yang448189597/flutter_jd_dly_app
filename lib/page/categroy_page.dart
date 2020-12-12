@@ -28,12 +28,9 @@ class _CategoryPageState extends State<CategoryPage> {
           body: Container(
             child: Consumer<CategoryPageProvider>(
               builder: (_, provider, __) {
-                if (provider.isLoading) {
-                  return Center(child: CupertinoActivityIndicator());
-                }
-
-                // 加载动画
-                if (provider.isLoading) {
+                // 加载动画 fixed
+                if (provider.isLoading &&
+                    provider.categoryNavList.length == 0) {
                   return Center(child: CupertinoActivityIndicator());
                 }
 
@@ -58,8 +55,14 @@ class _CategoryPageState extends State<CategoryPage> {
                   children: <Widget>[
                     buildNaviLeftContainer(provider),
                     Expanded(
-                        child:
-                            bulidCategoryContent(provider.categoryContentList))
+                        child: Stack(
+                      children: <Widget>[
+                        bulidCategoryContent(provider.categoryContentList),
+                        provider.isLoading
+                            ? Center(child: CupertinoActivityIndicator())
+                            : Container()
+                      ],
+                    ))
                   ],
                 );
               },
