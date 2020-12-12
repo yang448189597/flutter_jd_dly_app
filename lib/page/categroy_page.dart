@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_jd_dly/model/category_content_model.dart';
+import 'package:flutter_jd_dly/page/prodction_list_page.dart';
 import 'package:flutter_jd_dly/provider/category_page_provider.dart';
+import 'package:flutter_jd_dly/provider/product_list_provider.dart';
 
 import 'package:provider/provider.dart';
 
@@ -129,8 +131,8 @@ class _CategoryPageState extends State<CategoryPage> {
               children: <Widget>[
                 Image.asset(
                   "assets${categoryContentList[i].desc[j].img}",
-                  width: 50,
-                  height: 50,
+                  width: 55,
+                  height: 55,
                 ),
                 Text("${categoryContentList[i].desc[j].text}")
               ],
@@ -138,6 +140,24 @@ class _CategoryPageState extends State<CategoryPage> {
           ),
           onTap: () {
             // 点击事件 跳转商品页面
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    ChangeNotifierProvider<ProvductListProvider>(
+                      create: (context) {
+                        ProvductListProvider provider = ProvductListProvider();
+                        provider.loadProductListData();
+                        return provider;
+                      },
+                      child: Consumer<ProvductListProvider>(
+                        builder: (_, provider, __) {
+                          return Container(
+                            child: ProductListPage(
+                                title:
+                                    "${categoryContentList[i].desc[j].text}"),
+                          );
+                        },
+                      ),
+                    )));
           },
         ));
       }
