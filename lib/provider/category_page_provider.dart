@@ -52,7 +52,7 @@ class CategoryPageProvider with ChangeNotifier {
       }
       isLoading = false;
       notifyListeners();
-      print(res.data);
+      // print(res.data);
     }).catchError((error) {
       print(error);
       errorMsg = error;

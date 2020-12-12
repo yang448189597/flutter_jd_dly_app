@@ -17,7 +17,7 @@ class HomePageProvider with ChangeNotifier {
     NetRequest().requestData(JdApi.HOME_PAGE).then((res) {
       isLoading = false;
       if (res.code == 200) {
-        print(res.data);
+        // print(res.data);
         model = HomePageModel.fromJson(res.data);
       }
       notifyListeners(); //做一个听众，当数据发生变化的时候，通知界面刷新
