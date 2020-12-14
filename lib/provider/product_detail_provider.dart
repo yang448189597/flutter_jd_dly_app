@@ -4,12 +4,12 @@ import 'package:flutter_jd_dly/model/produc_detail_model.dart';
 import 'package:flutter_jd_dly/net/net_request.dart';
 
 class ProvductDetailProvider with ChangeNotifier {
+  ProductDetailModel model;
   bool isLoading = false;
   bool isError = false;
   String errotMsg = '';
 
   loadProductData({String id}) {
-    ProductDetailModel model;
     isLoading = true;
     isError = false;
     errotMsg = '';
@@ -23,7 +23,6 @@ class ProvductDetailProvider with ChangeNotifier {
           ProductDetailModel tmpModel = ProductDetailModel.fromJson(item);
           if (tmpModel.partData.id == id) {
             model = tmpModel;
-            print(model.toJson());
           }
         }
       }
