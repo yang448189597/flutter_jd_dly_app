@@ -69,7 +69,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         buildPriceContainer(model),
 
                         // 白条支付
-                        buildPayContainer(baitiaoTitle),
+                        buildPayContainer(context, baitiaoTitle, model),
 
                         // 商品数量
                         buildCountContainer(model)
@@ -176,7 +176,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 
-  Container buildPayContainer(String baitiaoTitle) {
+  Container buildPayContainer(
+      BuildContext context, String baitiaoTitle, ProductDetailModel model) {
     return Container(
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
@@ -205,13 +206,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         ),
         onTap: () {
           // 选择支付方式 白条支付 分期
-          return buildShowBaiTiao();
+          buildShowBaiTiao(context, model);
         },
       ),
     );
   }
 
-  Future buildShowBaiTiao() {
+  Future buildShowBaiTiao(BuildContext context, ProductDetailModel model) {
     return showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
@@ -248,8 +249,62 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               ),
 
               // 主题列表
+              Container(
+                  margin: EdgeInsets.only(top: 40.0, bottom: 50.0),
+                  child: ListView.builder(
+                      itemCount: model.baitiao.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          child: Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                                child: Image.asset("assets/image/unselect.png",
+                                    width: 20, height: 20),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text("${model.baitiao[index].desc}"),
+                                    Text("${model.baitiao[index].tip}"),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            // 选择白条分期类型
+                          },
+                        );
+                      })),
 
               // 底部按钮
+              Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: InkWell(
+                    child: Container(
+                      width: double.infinity,
+                      height: 50.0,
+                      color: Color(0xFFE4393C),
+                      child: Center(
+                        child: Text(
+                          "立即打白条",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      // 确定分期并返回
+                      Navigator.pop(context);
+                    },
+                  ))
             ],
           );
         });
