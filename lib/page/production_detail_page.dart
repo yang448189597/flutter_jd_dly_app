@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_jd_dly/model/produc_detail_model.dart';
+import 'package:flutter_jd_dly/provider/cart_provider.dart';
 import 'package:flutter_jd_dly/provider/product_detail_provider.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
@@ -73,19 +74,20 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             context, baitiaoTitle, model, provider),
 
                         // 商品数量
-                        buildCountContainer(model, provider)
+                        buildCountContainer(context, model, provider)
                       ],
                     ),
 
                     // 底部菜单栏
-                    buildBottomPositioned()
+                    buildBottomPositioned(context, model)
                   ],
                 );
               }),
             )));
   }
 
-  Positioned buildBottomPositioned() {
+  Positioned buildBottomPositioned(
+      BuildContext context, ProductDetailModel model) {
     return Positioned(
         left: 0,
         right: 0,
@@ -136,6 +138,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 ),
                 onTap: () {
                   // 加入购物车
+                  Provider.of<CartProvider>(context).addToCart(model.partData);
                 },
               )),
             ],
@@ -143,8 +146,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         ));
   }
 
-  Container buildCountContainer(
-      ProductDetailModel model, ProvductDetailProvider provider) {
+  Container buildCountContainer(BuildContext context, ProductDetailModel model,
+      ProvductDetailProvider provider) {
     return Container(
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
@@ -318,6 +321,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             ),
                             onTap: () {
                               // 加入购物车
+                              Provider.of<CartProvider>(context)
+                                  .addToCart(model.partData);
+                              Navigator.pop(context);
                             },
                           ))
                     ],
