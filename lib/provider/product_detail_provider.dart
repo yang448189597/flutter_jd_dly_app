@@ -35,4 +35,18 @@ class ProvductDetailProvider with ChangeNotifier {
       notifyListeners();
     });
   }
+
+  // 分期切换
+  void changeBaiTiaoSelected(int index) {
+    if (this.model.baitiao[index].select == false) {
+      for (int i = 0; i < this.model.baitiao.length; i++) {
+        if (i == index) {
+          this.model.baitiao[i].select = true;
+        } else {
+          this.model.baitiao[i].select = false;
+        }
+      }
+      notifyListeners();
+    }
+  }
 }
