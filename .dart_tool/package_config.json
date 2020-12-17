@@ -80,6 +80,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "flutter_slidable",
+      "rootUri": "file:///Users/dly/.pub-cache/hosted/pub.flutter-io.cn/flutter_slidable-0.5.7",
+      "packageUri": "lib/",
+      "languageVersion": "1.19"
+    },
+    {
       "name": "flutter_swiper",
       "rootUri": "file:///Users/dly/.pub-cache/hosted/pub.flutter-io.cn/flutter_swiper-1.1.6",
       "packageUri": "lib/",
@@ -96,6 +102,12 @@
       "rootUri": "file:///Users/dly/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "fluttertoast",
+      "rootUri": "file:///Users/dly/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-7.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "http_parser",
@@ -290,7 +302,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-12-16T10:22:33.297633Z",
+  "generated": "2020-12-17T09:38:41.785944Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }
