@@ -160,4 +160,16 @@ class CartProvider with ChangeNotifier {
     }
     return amountStr;
   }
+
+  // 统计选中的商品个数
+
+  int getSelectedCount() {
+    int selectedCount = 0;
+    for (var i = 0; i < this.models.length; i++) {
+      if (this.models[i].isSelected == true) {
+        selectedCount++;
+      }
+    }
+    return selectedCount;
+  }
 }

@@ -105,7 +105,7 @@ class _CartPageState extends State<CartPage> {
                           color: Color(0xFFe4393c),
                           child: Center(
                             child: Text(
-                              "去结算()",
+                              "去结算(${provider.getSelectedCount()})",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500),
