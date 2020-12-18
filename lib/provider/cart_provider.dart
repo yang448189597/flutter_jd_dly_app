@@ -18,6 +18,7 @@ class CartProvider with ChangeNotifier {
     // print(data.toJson());
 
     list = preferences.getStringList("cartInfo");
+    models.clear();
 
     if (list == null) {
       print("没有数据");

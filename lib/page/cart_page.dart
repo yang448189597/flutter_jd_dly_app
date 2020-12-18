@@ -211,6 +211,8 @@ class _CartPageState extends State<CartPage> {
                           ),
                           onTap: () {
                             // 减号 点击事件
+                            provider.models[index].count -= 1;
+                            provider.addToCart(provider.models[index]);
                           },
                         ),
                         SizedBox(width: 2),
@@ -236,6 +238,8 @@ class _CartPageState extends State<CartPage> {
                           ),
                           onTap: () {
                             // 加号 点击事件
+                            provider.models[index].count += 1;
+                            provider.addToCart(provider.models[index]);
                           },
                         ),
                       ],
