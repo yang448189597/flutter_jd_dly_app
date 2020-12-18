@@ -70,13 +70,16 @@ class _CartPageState extends State<CartPage> {
                             padding:
                                 const EdgeInsets.only(left: 5.0, right: 5.0),
                             child: Image.asset(
-                              "assets/image/unselect.png",
+                              provider.isSelectAll
+                                  ? "assets/image/selected.png"
+                                  : "assets/image/unselect.png",
                               width: 20,
                               height: 20,
                             ),
                           ),
                           onTap: () {
                             // 选中
+                            provider.changeSelectAll();
                           },
                         ),
                         Text(
@@ -89,7 +92,7 @@ class _CartPageState extends State<CartPage> {
                           style: TextStyle(fontSize: 16.0),
                         ),
                         Text(
-                          "￥",
+                          "￥${provider.getAmount()}",
                           style: TextStyle(
                               fontSize: 16.0,
                               color: Color(0xFFe4393c),
@@ -145,13 +148,16 @@ class _CartPageState extends State<CartPage> {
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Image.asset(
-                "assets/image/unselect.png",
+                provider.models[index].isSelected
+                    ? "assets/image/selected.png"
+                    : "assets/image/unselect.png",
                 width: 20,
                 height: 20,
               ),
             ),
             onTap: () {
               // 选中事件
+              provider.changeSelectedId(provider.models[index].id);
             },
           ),
           Expanded(
