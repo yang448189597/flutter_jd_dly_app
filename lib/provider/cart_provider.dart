@@ -20,9 +20,15 @@ class CartProvider with ChangeNotifier {
     // print(data.toJson());
 
     list = preferences.getStringList("cartInfo");
+    // 定义map数据
+    Map<String, bool> modelSelectedMap = {};
+    for (PartData model in models) {
+      modelSelectedMap.addAll({model.id: model.isSelected});
+    }
     models.clear();
 
     if (list == null) {
+      list = [];
       print("没有数据");
       list.add(json.encode(data.toJson()));
       // list.add("没有数据");
@@ -43,6 +49,13 @@ class CartProvider with ChangeNotifier {
           tmpData.count = data.count;
           isUpdated = true;
         }
+
+        // 遍历判断点击的商品id和Key是否相等
+        modelSelectedMap.forEach((key, value) {
+          if (tmpData.id == key) {
+            tmpData.isSelected = value;
+          }
+        });
 
         // 放入数组中
         String tmpDataStr = json.encode(tmpData.toJson());
