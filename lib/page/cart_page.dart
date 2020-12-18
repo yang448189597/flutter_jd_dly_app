@@ -217,8 +217,10 @@ class _CartPageState extends State<CartPage> {
                           ),
                           onTap: () {
                             // 减号 点击事件
-                            provider.models[index].count -= 1;
-                            provider.addToCart(provider.models[index]);
+                            if (provider.models[index].count > 1) {
+                              provider.models[index].count -= 1;
+                              provider.addToCart(provider.models[index]);
+                            }
                           },
                         ),
                         SizedBox(width: 2),
@@ -238,7 +240,7 @@ class _CartPageState extends State<CartPage> {
                               child: Text(
                                 "+",
                                 style: TextStyle(
-                                    fontSize: 18.0, color: Color(0xFFB0B0B0)),
+                                    fontSize: 18.0, color: Colors.black),
                               ),
                             ),
                           ),
